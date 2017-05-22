@@ -13,9 +13,10 @@ else
   curl -o- -L https://yarnpkg.com/install.sh | bash
   rm .profile
 fi
+PATH=$PATH:/opt/app-root/src/.yarn/bin
 echo 'installing assets in source code with yarn'
 cd /tmp/src
-$HOME/.yarn/bin/yarn install
+yarn install
 cd $HOME
 
 echo "Executing original script:"
