@@ -1,5 +1,7 @@
 {
   "name": "shift-booking",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "patternfly-sass": "^3.23.2"
+  }
 }
