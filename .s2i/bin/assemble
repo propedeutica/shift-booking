@@ -1,0 +1,31 @@
+#!/bin/bash
+echo "Updating bundler to new version"
+cd $HOME
+gem install bundler -f
+echo "moving bundler to /tmp/src"
+cp -r ./bin /tmp/src
+rm -rf ./bin/
+echo 'installing yarn'
+if [ -f .profile]; then
+  curl -o- -L https://yarnpkg.com/install.sh | bash
+else
+  touch .profile
+  curl -o- -L https://yarnpkg.com/install.sh | bash
+  rm .profile
+fi
+echo 'installing assets in source code with yarn'
+cd /tmp/src
+$HOME/.yarn/bin/yarn install
+cd $HOME
+
+echo "Executing original script:"
+/usr/libexec/s2i/assemble
+rc=$?
+
+if [ $rc -eq 0 ]; then
+    echo "After successful assembling"
+else
+    echo "After failed assembling"
+fi
+
+exit $rc
