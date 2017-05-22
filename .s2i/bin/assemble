@@ -14,11 +14,6 @@ else
   rm .profile
 fi
 PATH=$PATH:/opt/app-root/src/.yarn/bin
-echo 'installing assets in source code with yarn'
-cd /tmp/src
-yarn install
-cd $HOME
-
 echo "Executing original script:"
 /usr/libexec/s2i/assemble
 rc=$?
