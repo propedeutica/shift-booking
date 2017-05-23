@@ -1,6 +1,8 @@
 class DeviseCreateAdmins < ActiveRecord::Migration[5.1]
   def change
     create_table :admins do |t|
+      # Redefine inet to string for SQL3
+      t.inet { t.string } unless t.class.to_s.include? "::SQLite"
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
