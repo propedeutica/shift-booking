@@ -1,6 +1,12 @@
 class DeviseCreateUsers < ActiveRecord::Migration[5.1]
   def change
     create_table :users do |t|
+      # Redefine inet to string for SQLite3
+      if t.class.to_s.include? "::SQLite3"
+        t.define_singleton_method(:inet) do |*args|
+          t.string *args
+        end
+      end
       ## User data
       t.string :first_name, null: false
       t.string :last_name,  null: false
@@ -21,8 +27,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.integer  :sign_in_count, default: 0, null: false
       t.datetime :current_sign_in_at
       t.datetime :last_sign_in_at
-      t.string   :current_sign_in_ip
-      t.string   :last_sign_in_ip
+      t.inet     :current_sign_in_ip
+      t.inet     :last_sign_in_ip
 
       ## Confirmable
       # t.string   :confirmation_token
@@ -31,9 +37,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       # t.string   :unconfirmed_email # Only if using reconfirmable
 
       ## Lockable
-      # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
+      t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
-      # t.datetime :locked_at
+      t.datetime :locked_at
 
 
       t.timestamps null: false

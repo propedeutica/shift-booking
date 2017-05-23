@@ -6,7 +6,7 @@ echo "moving bundler to /tmp/src"
 cp -r ./bin /tmp/src
 rm -rf ./bin/
 echo 'installing yarn'
-if [ -f .profile]; then
+if [ -f .profile ]; then
   curl -o- -L https://yarnpkg.com/install.sh | bash
 else
   touch .profile
