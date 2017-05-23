@@ -1,0 +1,6 @@
+- flash.each do |message_type, message|
+  %div{ class: flash_class_dismissable(message_type).to_s }
+    %button.close{ "area-hidden" => "true", "data-dismiss" => "alert", :type => "button" }
+      %span.pficon.pficon-close
+    %span{ class: flash_icon(message_type).to_s }
+    = message

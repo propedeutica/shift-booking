@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admins
+  devise_for :users
   get 'information/info'
   get 'information/about'
   root 'information#about'

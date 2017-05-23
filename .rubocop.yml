@@ -1,0 +1,61 @@
+# This is the configuration used to check the rubocop source code.
+
+AllCops:
+  Exclude:
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - 'spec/fixtures/**/*'
+    - 'lib/**/*'
+    - 'spec/spec_helper.rb'
+    - 'spec/rails_helper.rb'
+    - 'db/schema.rb'
+    - 'db/migrate/**/*'
+    - 'config.ru'
+    - 'config/initializers/**/*'
+    - 'Gemfile'
+    - 'bin/**/*'
+    - 'config/environments/**/*'
+    - 'bundler_stubs/**/*'
+    - 'spec/teaspoon_env.rb'
+    - 'node_modules/**/*'
+    - 'config/**/*'
+    - 'test/test_helper.rb'
+
+  TargetRubyVersion: 2.3
+
+Style/Encoding:
+  EnforcedStyle: never
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+  Enabled: false
+
+Style/EndOfLine:
+  EnforcedStyle: lf
+
+Style/IndentHeredoc:
+  EnforcedStyle: powerpack
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - 'spec/**/*.rb'
+
+Lint/UselessAccessModifier:
+  MethodCreatingMethods:
+    - 'def_matcher'
+    - 'def_node_matcher'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+
+Metrics/ModuleLength:
+  Exclude:
+    - 'spec/**/*.rb'
+
+Metrics/LineLength:
+  Max: 160
+  Severity: refactor

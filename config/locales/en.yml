@@ -16,18 +16,388 @@
 #
 # This would use the information in config/locales/es.yml.
 #
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  global_lock_error:         "The systems is locked. No changes are allowed"
+  layouts:
+    admin_header:
+      users:                 "Users"
+      rooms:                 "Rooms"
+      control_panel:         "Dashboard"
+      reports:               "Reports"
+      help:                  "Help"
+      about:                 "About"
+      info:                  "Information"
+      signed_in:             "Signed in"
+      not_signed_in:         "Identification needed"
+      not_identified:        "User"
+      change_password:       "Change password"
+      sign_out:              "Sign_out"
+      admins:                "Administrators"
+      offsprings:            "Offsprings"
+    header:
+      rooms:                 "Rooms"
+      user_panel:            "My information"
+      offsprings:            "Offsprings"
+      help:                  "Help"
+      about:                 "About"
+      info:                  "Information"
+      log_in:                "Log in"
+      log_out:               "Log out"
+      log_in_as_admin:       "Log in as an administrator"
+      more_options:          "More options"
+      signed_in:             "Signed in"
+      sign_up:               "Sign up"
+      not_signed_in:         "Identification needed"
+      not_identified:        "User"
+      change_password:       "Change password"
+      sign_out:              "Sign_out"
+  admin:
+    myconfig:
+      global_lock_switch:
+        global_lock_switch_success:         "Switch has been changed succesfully"
+        global_lock_switch_error:           "There was an error updating the switch"
+        global_lock_set_true_success:       "Global lock is now in place"
+        global_lock_set_true_error:         "There was an error setting the global lock to true"
+        global_lock_set_false_success:      "Global lock is now not in place"
+        global_lock_set_false_error:        "There was an error setting the global lock to false"
+    dashboard:
+      index:
+        enable:                "Enable"
+        disable:               "Disable"
+        global_lock_in_status: "Global lock in status:"
+        status:                "Status"
+        destroy_all_rooms:      "Delete all rooms"
+        destroy_all_shifts:     "Delete all shifts"
+        destroy_all_users:      "Delete all users"
+        destroy_all_offsprings: "Delete all offsprings"
+        irreversible:           "Are you sure? The following action can not be undone"
+      info:
+        admins:                "Admins"
+        users:                 "Users"
+        offsprings:            "Offsprings"
+        rooms:                 "Rooms"
+        shifts:                "Shifts"
+        total_sites_available: "Sites available"
+        total_capacity:        "Capacity on all shifts"
+        refresh:               "Refresh"
+        space_available:       "Space available"
+    admins:
+      index:
+        admins:              "Admins"
+    users:
+      index:
+        users:               "Users"
+      show:
+        edit_user:           "Edit user"
+      edit:
+        edit:                         "Edit"
+        we_need_your_admin_password:  "We need your admin password to delete the account"
+        update:                       "Update"
+        delete_the_account:           "Delete the account"
+        are_you_sure?:                "Are you sure?"
+        back:                         "Back"
+      update:
+        user_updated:                 "User %{user} has been updated"
+        user_not_updated:             "User %{user} could not be updated"
+      destroy:
+        user_deleted:                 "User %{user} has been deleted"
+        user_not_deleted:             "User %{user} could not be deleted"
+        user_not_found:               "We couldn't find the user"
+    offsprings:
+      offspring:
+        no_assignment_yet:            "No assignment yet"
+      index:
+        offsprings:               "Offsprings"
+      show:
+        edit_offspring:          "Edit offspring"
+        offspring_not_found:     "We couldn't find the offspring"
+    rooms:
+      room:
+        room:                     "Room"
+        available:                "Available"
+        occupied:                 "Occupied"
+      add_shift:
+        irreversible:           "Are you sure? The following action can not be undone"
+      edit:
+        irreversible:           "Are you sure? The following action can not be undone"
+        room_not_found:         "We couldn't find the room"
+      destroy:
+        room_deleted:           "Room %{room} has been deleted"
+        room_not_deleted:       "There has been an error deleting the room"
+      destroy_all:
+        rooms_destroy_all:       "All Rooms have been deleted"
+        rooms_destroy_all_error: "There was an error trying to delete all rooms"
+      show:
+        room_not_found:         "We couldn't find the room"
+      update:
+        room_updated:        "Room updated succesfully"
+        room_not_updated:    "There was an error updating the room"
+      create:
+        room_added:          "Room #{room} added"
+        room_not_added:      "There was an error adding the room"
+      index:
+        room_index:          "Room index"
+    shifts:
+      edit:
+        irreversible:           "Are you sure? The following action can not be undone"
+        shift_not_found:        "We couldn't find the shift"
+      update:
+        shift_updated:        "Shift updated succesfully"
+        shift_not_updated:    "There was an error updating the shift"
+      show:
+        shift_not_found:      "We couldn't find the shift"
+        shift_not_added:      "Shift could not be added"
+      create:
+        shift_added:          "Shift %{shift} added"
+        shift_not_added:      "Shift could not be added"
+      destroy:
+        shift_deleted:        "Shift %{shift} has been deleted"
+        shift_not_deleted :   "There has been an error deleting the shift"
+      destroy_all:
+        shift_destroy_all:        "All Shifts have been deleted"
+        shift_destroy_all_error:  "There was an error trying to delete all shifts"
+  admins:
+    sessions:
+      new:
+        admin:                  "Admin log in"
+        log_in:                 "Log in"
+        welcome:                "Welcome to Shift Reservation | Admin interface"
+        welcome-text:           "This interface will allow only admins to sign in"
+        remember_username:      "Remember admin"
+  user:
+    offsprings:
+      index:
+        offsprings:             "Offsprings"
+        no_offsprings:          "Please add your offspring here"
+      add_offspring:
+        add_offspring:          "Add offspring"
+      offspring:
+        assign:                 "Assign shift"
+        no_assignment_yet:      "There is no assignment in the database"
+        are_you_sure?:          "Are you sure?"
+        delete:                 "Delete"
+        show:                   "Show"
+        edit:                   "Edit"
+        delete_assignment:      "Delete assignment"
+        irreversible:           "Are you sure? This action can not be undone"  
+      new:
+        new_offspring:          "Add offspring"
+        create:                 "Create"
+        param_error:            "There is an error in the offspring definition"
+        assign:                 "Assign shift"
+        no_assignment_yet:      "There is no assignment in the database"
+      create:
+        offspring_added:       "Offspring %{offspring} was added"
+        offspring_not_added:   "There was an error adding the offspring'"
+      show:
+        show_offspring:        "Offspring: %{offspring}"
+        edit:                  "Edit"
+        offspring_not_found:   "We couldn't find the offspring"
+        cancel:                "Cancel"
+      edit:
+        edit_offspring:        "Edit: %{offspring}"
+        update:                 "Update"
+        delete:                 "Delete"
+        are_you_sure?:          "Are you sure?"
+        cancel:                 "Cancel"
+        offspring_not_found:    "There was an error finding the offspring"
+      update:
+        offspring_updated:      "%{offspring} has been updated"
+        offspring_not_updated:  "There was an error updating the offspring"
+        offspring_not_found:    "We couldn't find the offspring"
+      destroy:
+        offspring_deleted:      "%{offspring} has been deleted"
+        offspring_not_deleted:  "There was an error deleting the offspring"
+        offspring_not_found:    "We couldn't find the offspring"
+    assignments:
+      new:
+        offspring_not_found:    "We couldn't find the offspring"
+        shift_select:           "Select a shift"
+        shift_select_for:       "Select a shift for %{offspring}"
+      create:
+        assignment_added:       "A new assignment has been added"
+        assignment_not_added:   "There was an error with the assignment"
+      destroy:
+        assignment_deleted:     "The assignment for %{offspring} was deleted"
+        assignment_not_deleted: "There was a problem deleting the assignment"
+  users:
+    registrations:
+      new:
+        sign_up:               "Sign up"
+        remember_username:     "Remember user"
+        characters_minimum:    "characters minimum"
+        create:                "Create"
+      edit:
+        edit:                          "Edit"
+        waiting_confirmation:          "Currently waiting confirmation for: %{resource}"
+        leave_blank_if_you_dont_want:  "Leave blank if you don't want to change it"
+        characters_minimum:            "%{characters} characters minimum"
+        we_need_your_current_password: "We need your current password to confirm your changes"
+        update:                        "Update"
+        cancel_my_account:             "Cancel my account"
+        unhappy?:                      "Unhappy?"
+        are_you_sure?:                 "Are you sure?"
+        back:                          "Back"
+    sessions:
+      new:
+        user:                        "User"
+        log_in:                      "Log in"
+    show:
+      edit_user:             "Edit user"
+  rooms:
+    index:
+      room_index:                "Room index"
+    room:
+      available:                 "available"
+  application:
+    name:                   "Shift Reservation"
+    about:                  "About"
+    forward_url:            "http://www.patternfly.org"
+    github_link:            "https://github.com/propedeutica/shift-reservation"
+    help:                   "Help"
+    info:                   "Information"
+    reports:                "Reports"
+    dashboard:              "Dashboard"
+    models:
+      errors_prohibited_saving: "prohibited this %{model} from being saved"
+      room:
+        room:                   "Room"
+        name:                   "Name"
+        capacity:               "Capacity"
+        room_index:             "Room index"
+        add_room:               "Add room"
+        delete_room:            "Delete room"
+        update_room:            "Update room"
+        edit_room:              "Edit room"
+        cancel_action:          "Cancel"
+        room_added:             "Room added"
+        room_deleted:           "Room deleted"
+        room_not_added:         "Room could not be added"
+        room_updated:           "Room updated succesfully"
+        room_not_updated:       "Room could not be updated"
+        there_are_no_rooms_yet: "There are no rooms yet defined"
+        redirect_to_index:      "Go back"
+        export_csv:             "Export to CSV"
+      shift:
+        shift:                  "Shift"
+        site:                   "Site"
+        sites_available:        "Sites available"
+        add_shift:              "Add shift"
+        add_shift_in_room:      "Add Shift to Room \"%{room}\""
+        edit_shift_in_room:     "Update Shift %{shift} in Room \"%{room}\""
+        delete_shift:           "Delete shift"
+        update_shift:           "Update shift"
+        edit_shift:             "Edit shift"
+        sites_reserved:         "Sites reserved"
+        sites_assigned:         "Sites assigned"
+        day_of_week:            "Day of week"
+        start_time:             "Start time"
+        end_time:               "End time"
+        redirect_to_index:      "Go back"
+        cancel_edit_shift:      "Cancel"
+  week:
+    monday:                     "Monday"
+    tuesday:                    "Tuesday"
+    wednesday:                  "Wednesday"
+    thursday:                   "Thursday"
+    friday:                     "Friday"
+    saturday:                   "Saturday"
+    sunday:                     "Sunday"
+    no_day:                     "Never"
+  grades:
+    primary_first:              "First of primary"
+    primary_second:             "Second of primary"
+    primary_third:              "Third of primary"
+    others:                     "Others"
+  activerecord:
+    errors:
+      template:
+        header:
+          one:                  "1 error prohibited this %{model} from being saved"
+          other:                "%{count} errors prohibited this %{model} from being saved"
+          body:                 "There were problems with the following fields:"
+      models:
+        shift:
+          attributes:
+            sites_reserved:
+              sites_available_greater_than_or_equal_to_0:   "should be lower than maximum capacity"
+              not_a_number:                                 "is not a number"
+            start_time:
+              invalid_format:           "should be formatted as hh:mm"
+            end_time:
+              invalid_format:           "should be formatted as hh:mm"
+              end_time_earlier_than_start_time:             "should be later than init_time"
+            day_of_week:
+              not_a_number:                                  "is not a number"
+              blank:                                         "can't be blank"
+              greater_than_or_equal_to:                      "must be greater than or equal to %{count}"
+              less_than_or_equal_to:                         "must be less than or equal to %{count}"
+        user:
+          attributes:
+            first_name:
+              blank:              "can't be blank"
+              too_short:          "is too short (minimum is %{count} characters)"
+              too_long:           "is too long (maximum is %{count} characters)"
+            last_name:
+              blank:              "can't be blank"
+              too_short:          "is too short (minimum is %{count} characters)"
+              too_long:           "is too long (maximum is %{count} characters)"
+            email:
+              blank:              "can't be blank"
+              too_short:          "is too short (minimum is %{count} characters)"
+              too_long:           "is too long (maximum is %{count} characters)"
+              invalid:            "is invalid"
+              duplicated:         "has already been taken"
+            password:
+              blank:              "can't be blank"
+              too_short:          "is too short (minimum is %{count} characters)"
+              too_long:           "is too long (maximum is %{count} characters)"
+            phone:
+              blank:              "can't be blank"
+              too_short:          "is too short (minimum is %{count} characters)"
+              too_long:           "is too long (maximum is %{count} characters)"
+              invalid:            "is invalid"
+        admin:
+          attributes:
+            email:
+              blank:              "can't be blank"
+              invalid:            "is invalid"
+              duplicated:         "has already been taken"
+            password:
+              blank:              "can't be blank"
+              too_short:          "is too short (minimum is %{count} characters)"
+              too_long:           "is too long (maximum is %{count} characters)"
+        offspring:
+          attributes:
+            first_name:
+              blank:              "can't be blank"
+              too_short:          "is too short (minimum is %{count} characters)"
+              too_long:           "is too long (maximum is %{count} characters)"
+            last_name:
+              blank:              "can't be blank"
+              too_short:          "is too short (minimum is %{count} characters)"
+              too_long:           "is too long (maximum is %{count} characters)"
+              different:          "can't be different to siblings'"
+            age:
+              blank:                          "can't be blank'"
+              too_short_or_equal_to:          "must be greater than or equal to %{count}"
+            grade:
+              blank:              "can't be blank"
+              invalid:            "the chosen grade is invalid"
+              too_short:          "is too short (minimum is %{count} characters)"
+              min_grade:          "must be greater than 0"
+            user:
+              blank:              "must exist"
+        assignment:
+          attributes:
+            user:
+              blank:                 "can't be blank"
+            offspring:
+              blank:                 "can't be blank"
+              taken:                 "has already been assigned"
+            shift:
+              blank:                 "can't be blank"
+              no_sites_available:    "no sites available"
