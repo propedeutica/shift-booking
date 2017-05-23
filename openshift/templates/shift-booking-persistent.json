@@ -2,21 +2,21 @@
   "kind": "Template",
   "apiVersion": "v1",
   "metadata": {
-    "name": "rails-pgsql-persistent",
+    "name": "catequesis",
     "annotations": {
-      "openshift.io/display-name": "Rails + PostgreSQL (Persistent)",
-      "description": "An example Rails application with a PostgreSQL database. For more information about using this template, including OpenShift considerations, see https://github.com/openshift/rails-ex/blob/master/README.md.",
-      "tags": "quickstart,ruby,rails",
+      "openshift.io/display-name": "Shift Booing (Rails) + PostgreSQL (Persistent)",
+      "description": "A Shift booking application for parents.",
+      "tags": "ruby,rails",
       "iconClass": "icon-ruby",
       "template.openshift.io/long-description": "This template defines resources needed to develop a Rails application, including a build configuration, application deployment configuration, and database deployment configuration.",
-      "template.openshift.io/provider-display-name": "Red Hat, Inc.",
-      "template.openshift.io/documentation-url": "https://github.com/openshift/rails-ex",
-      "template.openshift.io/support-url": "https://access.redhat.com"
+      "template.openshift.io/provider-display-name": "Sergio Ocón",
+      "template.openshift.io/documentation-url": "https://github.com/propedeutica/shift-booking",
+      "template.openshift.io/support-url": "https://github.com/propedeutica/shift-booking/issues"
     }
   },
   "message": "The following service(s) have been created in your project: ${NAME}, ${DATABASE_SERVICE_NAME}.\n\nFor more information about using this template, including OpenShift considerations, see https://github.com/openshift/rails-ex/blob/master/README.md.",
   "labels": {
-    "template": "rails-pgsql-persistent"
+    "template": "shift-booking-persistent"
   },
   "objects": [
     {
@@ -206,7 +206,7 @@
                   "timeoutSeconds": 3,
                   "initialDelaySeconds": 5,
                   "httpGet": {
-                    "path": "/articles",
+                    "path": "/",
                     "port": 8080
                   }
                 },
@@ -214,7 +214,7 @@
                   "timeoutSeconds": 3,
                   "initialDelaySeconds": 10,
                   "httpGet": {
-                    "path": "/articles",
+                    "path": "/",
                     "port": 8080
                   }
                 },
@@ -266,25 +266,7 @@
                     "name": "APPLICATION_DOMAIN",
                     "value": "${APPLICATION_DOMAIN}"
                   },
-                  {
-                    "name": "APPLICATION_USER",
-                    "valueFrom": {
-                      "secretKeyRef" : {
-                        "name" : "${NAME}",
-                        "key" : "application-user"
-                      }
-                    }
-                  },
-                  {
-                    "name": "APPLICATION_PASSWORD",
-                    "valueFrom": {
-                      "secretKeyRef" : {
-                        "name" : "${NAME}",
-                        "key" : "application-password"
-                      }
-                    }
-                  },
-                  {
+                   {
                     "name": "RAILS_ENV",
                     "value": "${RAILS_ENV}"
                   }
@@ -470,7 +452,7 @@
       "displayName": "Name",
       "description": "The name assigned to all of the frontend objects defined in this template.",
       "required": true,
-      "value": "rails-pgsql-persistent"
+      "value": "web"
     },
     {
       "name": "NAMESPACE",
@@ -505,7 +487,7 @@
       "displayName": "Git Repository URL",
       "required": true,
       "description": "The URL of the repository with your application source code.",
-      "value": "https://github.com/openshift/rails-ex.git"
+      "value": "https://github.com/sergio-ocon/shift-booking.git"
     },
     {
       "name": "SOURCE_REPOSITORY_REF",
@@ -536,20 +518,6 @@
       "description": "Your secret key for verifying the integrity of signed cookies.",
       "generate": "expression",
       "from": "[a-z0-9]{127}"
-    },
-    {
-      "name": "APPLICATION_USER",
-      "displayName": "Application Username",
-      "required": true,
-      "description": "The application user that is used within the sample application to authorize access on pages.",
-      "value": "openshift"
-    },
-    {
-      "name": "APPLICATION_PASSWORD",
-      "displayName": "Application Password",
-      "required": true,
-      "description": "The application password that is used within the sample application to authorize access on pages.",
-      "value": "secret"
     },
     {
       "name": "RAILS_ENV",
