@@ -2,6 +2,7 @@
 %html
   %head
     = render 'layouts/head'
+    = yield(:head_javascripts)
   %body
     - if admin_signed_in?
       = render 'layouts/admin_masthead'
@@ -10,5 +11,7 @@
     .container-fluid
       = render 'layouts/messages'
       = yield
-      = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-= render 'layouts/debug' if Rails.env.development?
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = render 'layouts/tail'
+    = render 'layouts/debug' if Rails.env.development?
+    = yield(:javascripts)

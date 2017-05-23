@@ -1,6 +1,3 @@
-/**
- * Created by sergio on 22/05/17.
- */
 $(function() {
   // for bootstrap 3 use 'shown.bs.tab', for bootstrap 2 use 'shown' in the next line
   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {

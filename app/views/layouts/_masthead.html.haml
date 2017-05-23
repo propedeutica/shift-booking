@@ -19,11 +19,11 @@
         %ul.dropdown-menu
           %li
             = link_to  new_user_session_path do
-              .fa.fa-sign-in= (t '.log_in')
+              .fa.fa-sign-in= (t '.sign_in')
 
           %li
             = link_to destroy_user_session_path, method: :delete do
-              .fa.fa-sign-out= (t '.log_out')
+              .fa.fa-sign-out= (t '.sign_out')
           %li.divider
           %li
             = link_to new_user_registration_path do
@@ -59,4 +59,5 @@
             %li
               = link_to (t '.help'), information_about_path
               = link_to (t '.info'), information_info_path
-= javascript_include_tag 'masthead_tabs'
+- content_for :javascripts do
+  = javascript_include_tag 'masthead_tabs'
