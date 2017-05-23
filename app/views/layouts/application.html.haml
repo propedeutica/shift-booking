@@ -10,5 +10,5 @@
     .container-fluid
       = render 'layouts/messages'
       = yield
-     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+      = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 = render 'layouts/debug' if Rails.env.development?
