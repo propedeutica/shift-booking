@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170524135018) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 20170524135018) do
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip"
-    t.string "last_sign_in_ip"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
     t.integer "failed_attempts", default: 0, null: false
     t.datetime "locked_at"
     t.datetime "created_at", null: false
@@ -32,9 +35,9 @@ ActiveRecord::Schema.define(version: 20170524135018) do
   end
 
   create_table "assignments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "offspring_id"
-    t.integer "shift_id"
+    t.bigint "user_id"
+    t.bigint "offspring_id"
+    t.bigint "shift_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["offspring_id"], name: "index_assignments_on_offspring_id"
@@ -55,7 +58,7 @@ ActiveRecord::Schema.define(version: 20170524135018) do
     t.string "last_name", null: false
     t.integer "grade"
     t.integer "age"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_offsprings_on_user_id"
@@ -73,7 +76,7 @@ ActiveRecord::Schema.define(version: 20170524135018) do
     t.string "start_time", null: false
     t.string "end_time", null: false
     t.integer "sites_reserved", default: 0, null: false
-    t.integer "room_id"
+    t.bigint "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_shifts_on_room_id"
@@ -91,8 +94,8 @@ ActiveRecord::Schema.define(version: 20170524135018) do
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip"
-    t.string "last_sign_in_ip"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
     t.integer "failed_attempts", default: 0, null: false
     t.datetime "locked_at"
     t.datetime "created_at", null: false
@@ -101,4 +104,9 @@ ActiveRecord::Schema.define(version: 20170524135018) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "assignments", "offsprings"
+  add_foreign_key "assignments", "shifts"
+  add_foreign_key "assignments", "users"
+  add_foreign_key "offsprings", "users"
+  add_foreign_key "shifts", "rooms"
 end
