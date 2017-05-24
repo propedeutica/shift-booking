@@ -35,4 +35,15 @@ module ApplicationHelper
     when 'error', 'alert', 'danger' then 'pficon pficon-error-circle-o'
     end
   end
+
+  def week_day_convert(day)
+    week_days = Rails.configuration.week_days
+    week_days.rotate! week_days.index Rails.configuration.beginning_of_week if
+        week_days.index Rails.configuration.beginning_of_week
+    week = []
+    week_days.each_with_index do |x, index|
+      week[index] = t "week.#{x}"
+    end
+    week[day] || t("week.no_day")
+  end
 end

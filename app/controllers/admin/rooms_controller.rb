@@ -17,7 +17,7 @@ class Admin::RoomsController < Admin::AdminIdentifiedController
     @room = Room.find_by(id: params[:id])
     if @room.nil?
       flash[:alert] = (t ".room_not_found")
-      redirect_to admin_content_rooms_path
+      redirect_to admin_rooms_path
     end
   end
 
@@ -25,7 +25,7 @@ class Admin::RoomsController < Admin::AdminIdentifiedController
     @room = Room.new(rooms_params)
     if @room.save
       flash[:success] = (t '.room_added')
-      redirect_to admin_content_room_path @room
+      redirect_to admin_room_path @room
     else
       flash[:alert] = (t '.room_not_added')
       render 'new'
@@ -36,7 +36,7 @@ class Admin::RoomsController < Admin::AdminIdentifiedController
     @room = Room.find_by(id: params[:id])
     if @room.nil?
       flash[:alert] = (t ".room_not_found")
-      redirect_to admin_content_rooms_path
+      redirect_to admin_rooms_path
     end
   end
 
@@ -44,7 +44,7 @@ class Admin::RoomsController < Admin::AdminIdentifiedController
     @room = Room.find_by(id: params[:id])
     if @room&.update_attributes(rooms_params)
       flash[:success] = (t ".room_updated")
-      redirect_to admin_content_room_path @room
+      redirect_to admin_room_path @room
     else
       flash[:alert] = (t ".room_not_updated")
       render 'edit'
@@ -58,7 +58,7 @@ class Admin::RoomsController < Admin::AdminIdentifiedController
     else
       flash[:alert] = (t ".room_not_deleted")
     end
-    redirect_to admin_content_rooms_path
+    redirect_to admin_rooms_path
   end
 
   def destroy_all
@@ -67,7 +67,7 @@ class Admin::RoomsController < Admin::AdminIdentifiedController
     else
       flash[:alert] = (t ".rooms_destroy_all_error")
     end
-    redirect_to admin_content_dashboard_path
+    redirect_to admin_dashboard_path
   end
 
   private

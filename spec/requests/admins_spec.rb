@@ -11,7 +11,7 @@ RSpec.describe "Admins", type: :request do
   context "when admin authenticated" do
     it "#index when admin" do
       login_as(admin, scope: :admin)
-      get admin_content_admins_path
+      get admin_admins_path
       expect(response).to have_http_status(200)
       expect(response.body).to include(admin.email)
     end
@@ -20,14 +20,14 @@ RSpec.describe "Admins", type: :request do
   context "when user authenticated" do
     it "#index when admin" do
       login_as(user, scope: :user)
-      get admin_content_admins_path
+      get admin_admins_path
       expect(response).to redirect_to new_admin_session_path
     end
   end
 
   context "when not authenticated" do
     it "#index when admin" do
-      get admin_content_admins_path
+      get admin_admins_path
       expect(response).to redirect_to new_admin_session_path
     end
   end

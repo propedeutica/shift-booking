@@ -6,7 +6,7 @@ class Admin::OffspringsController < Admin::AdminIdentifiedController
   def show
     @offspring = Offspring.find_by(id: params[:id])
     if @offspring.nil?
-      redirect_to admin_content_offsprings_path
+      redirect_to admin_offsprings_path
       flash[:alert] = (t ".offspring_not_found")
     end
   end

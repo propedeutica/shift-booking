@@ -14,7 +14,7 @@ class User::OffspringsController < UserAuthenticatedController
     @offspring.user = current_user
     if @offspring.save
       flash[:success] = t('.offspring_added', offspring: @offspring.first_name)
-      redirect_to user_content_offsprings_path
+      redirect_to user_offsprings_path
     else
       flash[:alert] = t '.offspring_not_added'
       render :new
@@ -25,7 +25,7 @@ class User::OffspringsController < UserAuthenticatedController
     @offspring = Offspring.find_by(id: params[:id], user: current_user)
     if @offspring.nil?
       flash[:alert] = t '.offspring_not_found'
-      redirect_to user_content_offsprings_path
+      redirect_to user_offsprings_path
     end
   end
 
@@ -33,7 +33,7 @@ class User::OffspringsController < UserAuthenticatedController
     @offspring = Offspring.find_by(id: params[:id], user: current_user)
     if @offspring.nil?
       flash[:alert] = t '.offspring_not_found'
-      redirect_to user_content_offsprings_path
+      redirect_to user_offsprings_path
     end
   end
 
@@ -41,10 +41,10 @@ class User::OffspringsController < UserAuthenticatedController
     @offspring = Offspring.find_by(id: params[:id], user: current_user)
     if @offspring.nil?
       flash[:alert] = t '.offspring_not_found'
-      redirect_to user_content_offsprings_path
+      redirect_to user_offsprings_path
     elsif @offspring.update_attributes(offsprings_params)
       flash[:success] = t('.offspring_updated', offspring: @offspring.id)
-      redirect_to user_content_offspring_path(@offspring)
+      redirect_to user_offspring_path(@offspring)
     else
       flash[:alert] = t '.offspring_not_updated'
       render :edit
@@ -60,7 +60,7 @@ class User::OffspringsController < UserAuthenticatedController
     else
       flash[:alert] = (t ".offspring_not_deleted")
     end
-    redirect_to user_content_offsprings_path
+    redirect_to user_offsprings_path
   end
 
   private

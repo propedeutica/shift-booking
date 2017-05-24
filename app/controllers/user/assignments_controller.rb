@@ -4,7 +4,7 @@ class User::AssignmentsController < UserAuthenticatedController
   def new
     unless (@offspring = Offspring.find_by(id: params[:offspring_id], user: current_user))
       flash[:alert] = t ".offspring_not_found"
-      redirect_to user_content_offsprings_path
+      redirect_to user_offsprings_path
     end
     @rooms = Room.all
     @shifts = Shift.all
@@ -18,10 +18,10 @@ class User::AssignmentsController < UserAuthenticatedController
     @assignment.offspring = Offspring.find_by(id: params[:offspring_id], user: current_user)
     if @assignment.offspring.nil?
       flash[:alert] = (t '.assignment_not_added')
-      redirect_to user_content_offsprings_path
+      redirect_to user_offsprings_path
     elsif @assignment.save
       flash[:success] = (t '.assignment_added')
-      redirect_to user_content_offsprings_path
+      redirect_to user_offsprings_path
     else
       flash[:alert] = (t '.assignment_not_added')
       render 'new'
@@ -35,7 +35,7 @@ class User::AssignmentsController < UserAuthenticatedController
     else
       flash[:alert] = (t ".assignment_not_deleted")
     end
-    redirect_to user_content_offsprings_path
+    redirect_to user_offsprings_path
   end
 
   private

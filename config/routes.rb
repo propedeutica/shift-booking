@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   end
 
   authenticate :user do
-    namespace :user_content do
-      resources :users, only: [:show]
-      resources :rooms, only: [:index]
+    resources :users, only: [:show]
+    resources :rooms, only: [:index]
+    namespace :user do
       resources :offsprings, shallow: true do
         resource :assignment, expect: [:show, :update]
       end
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   authenticate :admin do
-    namespace :admin_content do
+    namespace :admin do
       resources :users, only: [:index, :show, :edit, :update, :destroy]
       resources :offsprings, only: [:index, :show]
       post 'myconfig/global_lock_enable', to: "myconfig#global_lock_enable"
