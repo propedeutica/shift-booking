@@ -1,7 +1,7 @@
 ########################################################################
 #  Module Application Helper
 #
-#  : Define parameters for Devise, protection in inherited controllers
+#  : Define helpers for the application
 ########################################################################
 module ApplicationHelper
   def full_title(page_title = '')

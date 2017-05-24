@@ -42,15 +42,15 @@
     %ul.nav.navbar-nav.navbar-primary
       %li
         - if user_signed_in?
-          /= link_to (t'.user_panel'), user_path(current_user)
+          = link_to (t'.user_panel'), user_path(current_user)
         - else
           = link_to (t'.log_in'), new_user_session_path
       %li
         - if user_signed_in?
-          /= link_to t('.offsprings'), user_offsprings_path
+          = link_to t('.offsprings'), user_offsprings_path
       %li
         - if user_signed_in?
-          /= link_to t('.rooms'), rooms_path
+          = link_to t('.rooms'), rooms_path
       %li.dropdown
         %a.dropdown-toggle{ "data-toggle" => "dropdown", href: "#" }
           = (t '.help')

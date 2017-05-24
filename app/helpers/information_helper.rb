@@ -1,5 +1,5 @@
 ########################################################################
-#  Class Helper for Information Controller                             #
+#  Module Helper for Information Controller                             #
 ########################################################################
 module InformationHelper
 end

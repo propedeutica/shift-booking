@@ -24,15 +24,15 @@
             = link_to (t '.sign_out'), destroy_admin_session_path, method: :delete
     %ul.nav.navbar-nav.navbar-primary
       %li
-        /= link_to (t'.admins'), admin_admins_path
+        = link_to (t'.admins'), admin_admins_path
       %li
-        /= link_to (t'.users'), admin_users_path
+        = link_to (t'.users'), admin_users_path
       %li
-        /= link_to (t'.offsprings'), admin_offsprings_path
+        = link_to (t'.offsprings'), admin_offsprings_path
       %li
-        /= link_to t('.control_panel'), admin_dashboard_path
+        = link_to t('.control_panel'), admin_dashboard_path
       %li
-        /= link_to t('.rooms'), admin_rooms_path
+        = link_to t('.rooms'), admin_rooms_path
       %li.dropdown
         %a.dropdown-toggle{ "data-toggle" => "dropdown", href: "#" }
           = (t ".help")

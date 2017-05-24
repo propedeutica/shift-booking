@@ -15,5 +15,5 @@ class User < ApplicationRecord
   validates :phone, presence: true, length: { within: 9..13 }
   validates :phone, format: { with: VALID_TELEPHONE_REGEX }
   # Has offspring
-  # #### has_many :offsprings, dependent: :destroy
+ has_many :offsprings, dependent: :destroy
 end
