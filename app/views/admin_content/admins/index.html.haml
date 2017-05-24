@@ -1,0 +1,18 @@
+- provide :title, (t '.admins').to_s
+%h1= (t '.admins').to_s
+%table.datatable.table.table-striped.table-bordered
+  %thead
+    %tr
+      %th= Admin.human_attribute_name('id')
+      %th= Admin.human_attribute_name('email')
+      %th= Admin.human_attribute_name('created_at')
+      %th= Admin.human_attribute_name('updated_at')
+  %tbody
+    = render @admins
+
+- content_for :javascripts do
+  :javascript
+    // Initialize Datatables
+    $(document).ready(function() {
+      $('.datatable').dataTable();
+    });

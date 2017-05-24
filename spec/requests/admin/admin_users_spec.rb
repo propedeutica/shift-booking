@@ -15,33 +15,33 @@ RSpec.describe "Users", type: :request do
     end
 
     it "#index user" do
-      get admin_users_path
+      get admin_content_users_path
       expect(response).to have_http_status("200")
     end
 
     it "#show user" do
-      get admin_user_path(user)
+      get admin_content_user_path(user)
       expect(response).to have_http_status(200)
       expect(response.body).to include ERB::Util.html_escape user.first_name
     end
 
     it "#show flash when user.nil" do
-      get admin_user_path(1010)
-      expect(response).to redirect_to admin_users_path
+      get admin_content_user_path(1010)
+      expect(response).to redirect_to admin_content_users_path
       expect("admin.users.show.user_not_found").not_to include "translation missing:"
       expect(flash[:alert]).to include I18n.t "admin.users.show.user_not_found"
     end
 
     it "#edit should show the edit template for @user" do
-      get edit_admin_user_path(user)
+      get edit_admin_content_user_path(user)
       expect(response).to have_http_status(200)
       expect(controller.params[:id]).to eq(user.to_param)
       expect(controller.params[:action]).to eq("edit")
     end
 
     it "#edit flash when user.nil" do
-      get edit_admin_user_path(101)
-      expect(response).to redirect_to admin_users_path
+      get edit_admin_content_user_path(101)
+      expect(response).to redirect_to admin_content_users_path
       expect("admin.users.edit.user_not_found").not_to include "translation missing:"
       expect(flash[:alert]).to include I18n.t "admin.users.edit.user_not_found"
     end
@@ -49,8 +49,8 @@ RSpec.describe "Users", type: :request do
     it "#update should update the user via post" do
       user
       newdata = FactoryGirl.attributes_for(:user)
-      patch "/admin/users/#{user.id}", params: { id: user.to_param, user: newdata }
-      expect(response).to redirect_to admin_user_path(user.to_param)
+      patch "/admin_content/users/#{user.id}", params: { id: user.to_param, user: newdata }
+      expect(response).to redirect_to admin_content_user_path(user.to_param)
       expect(controller.params[:id]).to eq(user.to_param)
       expect(controller.params[:action]).to eq("update")
       expect(I18n.t('admin.users.update.user_updated')).not_to include "translation missing:"
@@ -58,7 +58,7 @@ RSpec.describe "Users", type: :request do
     end
 
     it "#update should not update the room with errors" do
-      patch "/admin/users/#{user.id}", params: { id: user.to_param, user: { first_name: nil} }
+      patch "/admin_content/users/#{user.id}", params: { id: user.to_param, user: { first_name: nil} }
       expect(response).to have_http_status(200)
       expect(controller.params[:id]).to eq(user.to_param)
       expect(controller.params[:action]).to eq("update")
@@ -68,7 +68,7 @@ RSpec.describe "Users", type: :request do
 
     it "#delete" do
       user
-      expect { delete admin_user_path(user) }.to change(User, :count).by(-1)
+      expect { delete admin_content_user_path(user) }.to change(User, :count).by(-1)
       expect("admin.user.destroy.room_deleted").not_to include "translation missing:"
       expect(flash[:success]).to eq I18n.t("admin.users.destroy.user_deleted", user: user.email)
       expect(response).to redirect_to admin_users_path
@@ -76,7 +76,7 @@ RSpec.describe "Users", type: :request do
 
     it "can't #delete without user" do
       user
-      expect { delete admin_user_path(100_000) }.to_not change(User, :count)
+      expect { delete admin_content_user_path(100_000) }.to_not change(User, :count)
       expect(response).to redirect_to admin_users_path
       expect("admin.users.destroy.user_not_found").not_to include "translation missing:"
       expect(flash[:alert]).to eq I18n.t("admin.users.destroy.user_not_found")
@@ -85,7 +85,7 @@ RSpec.describe "Users", type: :request do
     it "when #delete errors" do
       user
       allow_any_instance_of(User).to receive(:destroy).and_return(false)
-      expect { delete admin_user_path(user) }.to_not change(User, :count)
+      expect { delete admin_content_user_path(user) }.to_not change(User, :count)
       expect("admin.users.destroy.user_not_deleted").not_to include "translation missing:"
       expect(flash[:alert]).to eq I18n.t("admin.users.destroy.user_not_deleted", user: user.email)
     end
@@ -104,17 +104,17 @@ RSpec.describe "Users", type: :request do
     end
 
     it "#index user" do
-      get admin_users_path
+      get admin_content_users_path
       expect(response).to redirect_to new_admin_session_path
     end
 
     it "#shows the user" do
-      get admin_user_path(user)
+      get admin_content_user_path(user)
       expect(response).to redirect_to new_admin_session_path
     end
 
     it "does not show other user" do
-      get admin_user_path(otheruser)
+      get admin_content_user_path(otheruser)
       expect(response).to redirect_to new_admin_session_path
     end
   end
