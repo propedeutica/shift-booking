@@ -7,7 +7,7 @@ class Admin::UsersController < Admin::AdminIdentifiedController
     @user = User.find_by(id: params[:id])
     if @user.nil?
       redirect_to admin_users_path
-      flash[:alert] = (t ".user_not_found")
+      flash[:alert] = (t '.user_not_found')
     end
   end
 
@@ -15,7 +15,7 @@ class Admin::UsersController < Admin::AdminIdentifiedController
     @user = User.find_by(id: params[:id])
     if @user.nil?
       redirect_to admin_users_path
-      flash[:alert] = (t ".user_not_found")
+      flash[:alert] = (t '.user_not_found')
     end
   end
 
@@ -24,10 +24,10 @@ class Admin::UsersController < Admin::AdminIdentifiedController
     delete_password_params!
 
     if @user&.update_attributes(users_params)
-      flash[:success] = (t ".user_updated", user: @user.email)
+      flash[:success] = (t '.user_updated', user: @user.email)
       redirect_to admin_user_path(@user)
     else
-      flash[:alert] = (t ".user_not_updated", user: @user.email)
+      flash[:alert] = (t '.user_not_updated', user: @user.email)
       render 'edit'
     end
   end
@@ -35,13 +35,13 @@ class Admin::UsersController < Admin::AdminIdentifiedController
   def destroy
     @user = User.find_by(id: params[:id])
     if !@user
-      flash[:alert] = (t ".user_not_found")
+      flash[:alert] = (t '.user_not_found')
       redirect_to admin_users_path
     elsif @user.destroy
-      flash[:success] = (t ".user_deleted", user: @user.email)
+      flash[:success] = (t '.user_deleted', user: @user.email)
       redirect_to admin_users_path
     else
-      flash[:alert] = (t ".user_not_deleted", user: @user.email)
+      flash[:alert] = (t '.user_not_deleted', user: @user.email)
       render 'edit'
     end
   end

@@ -253,10 +253,10 @@ en:
     room:
       available:                 "available"
   application:
-    name:                   "Shift Reservation"
+    name:                   "Shift Booking"
     about:                  "About"
     forward_url:            "http://www.patternfly.org"
-    github_link:            "https://github.com/propedeutica/shift-reservation"
+    github_link:            "https://github.com/propedeutica/shift-booking"
     help:                   "Help"
     info:                   "Information"
     reports:                "Reports"

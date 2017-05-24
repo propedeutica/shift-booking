@@ -1,8 +1,8 @@
 require 'rails_helper'
 include Warden::Test::Helpers
 
-RSpec.describe "AdminRooms", type: :request do
-  context "when authenticated as user" do
+RSpec.describe 'AdminRooms', type: :request do
+  context 'when authenticated as user' do
     let!(:room) { FactoryGirl.create(:room) }
     let(:user) { FactoryGirl.create(:user) }
 
@@ -10,7 +10,7 @@ RSpec.describe "AdminRooms", type: :request do
       Warden.test_reset!
     end
 
-    it "shows rooms index" do
+    it 'shows rooms index' do
       login_as(user, scope: :user)
       room
       get rooms_path
@@ -19,7 +19,7 @@ RSpec.describe "AdminRooms", type: :request do
     end
   end
 
-  context "when authenticated as admin" do
+  context 'when authenticated as admin' do
     let!(:room) { FactoryGirl.create(:room) }
     let(:admin) { FactoryGirl.create(:admin) }
 
@@ -27,7 +27,7 @@ RSpec.describe "AdminRooms", type: :request do
       Warden.test_reset!
     end
 
-    it "shows rooms index" do
+    it 'shows rooms index' do
       login_as(admin, scope: :admin)
       room
       get rooms_path
@@ -35,14 +35,14 @@ RSpec.describe "AdminRooms", type: :request do
     end
   end
 
-  context "when not authenticated" do
+  context 'when not authenticated' do
     let!(:room) { FactoryGirl.create(:room) }
 
     after(:each) do
       Warden.test_reset!
     end
 
-    it "shows rooms index" do
+    it 'shows rooms index' do
       room
       get rooms_path
       expect(response).to redirect_to new_user_session_path

@@ -1,5 +1,5 @@
 - provide(:title, @user.first_name)
-%h1 #{User.model_name.human}: #{ full_name(@user) }
+%h1 #{ User.model_name.human }: #{ full_name(@user) }
 .form
   .form-group
     .control-label
@@ -23,4 +23,3 @@
       = @user.phone
 %p
   = link_to t(".edit_user"), edit_user_registration_path(@user), class: "btn btn-primary"
-

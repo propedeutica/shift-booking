@@ -1,2 +1,7 @@
-%h1 Information#about
-%p Find me in app/views/information/about.html.haml
+- provide :title, (t 'application.about').to_s
+%h1 Welcome to the Shift Booking example application
+%p You can find this application in github
+= link_to t("application.name"), t("application.github_link")
+%h3 Distributed under the GNU AFFERO GENERAL PUBLIC LICENSE 3, and Apache Public License 2.0.
+%p You can decide which license to apply to when forking your code from this repository (Although I would recommend AGPL)
+%p See LICENSE*.md file for more information

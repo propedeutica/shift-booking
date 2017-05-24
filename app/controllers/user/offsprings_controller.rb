@@ -52,13 +52,13 @@ class User::OffspringsController < UserAuthenticatedController
   end
 
   def destroy
-    @offspring = Offspring.find_by(id: params["id"], user: current_user)
+    @offspring = Offspring.find_by(id: params['id'], user: current_user)
     if @offspring.nil?
       flash[:alert] = t '.offspring_not_found'
     elsif @offspring.destroy
-      flash[:success] = (t ".offspring_deleted", offspring: @offspring.first_name)
+      flash[:success] = (t '.offspring_deleted', offspring: @offspring.first_name)
     else
-      flash[:alert] = (t ".offspring_not_deleted")
+      flash[:alert] = (t '.offspring_not_deleted')
     end
     redirect_to user_offsprings_path
   end

@@ -3,18 +3,18 @@
     .list-view-pf-actions
       = link_to t('.assign'), new_user_offspring_assignment_path(offspring), class: "button btn btn-default"
       .dropdown.pull-right.dropdown-kebab-pf
-        %button.btn.btn-link.dropdown-toggle#dropdownKebabRight3{"aria-expanded": "true", "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
+        %button.btn.btn-link.dropdown-toggle#dropdownKebabRight3{ "aria-expanded": "true", "aria-haspopup": "true", "data-toggle": "dropdown", type: "button" }
           %span.fa.fa-ellipsis-v
-        %ul.dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownKebabRight3"}
+        %ul.dropdown-menu.dropdown-menu-right{ "aria-labelledby" => "dropdownKebabRight3" }
           %li
-            %a{href: user_offspring_path(offspring)}= t '.show'
-          %li.divider{role: "separator"}
+            %a{ href: user_offspring_path(offspring) }= t '.show'
+          %li.divider{ role: "separator" }
           %li
-            %a{href: edit_user_offspring_path(offspring)}= t '.edit'
-          %li.divider{role: "separator"}
+            %a{ href: edit_user_offspring_path(offspring) }= t '.edit'
+          %li.divider{ role: "separator" }
           %li
             = link_to (t '.delete'), user_offspring_path(offspring), method: :delete,
-              data: { confirm: t('.irreversible') } 
+              data: { confirm: t('.irreversible') }
             = link_to_if(offspring&.assignment, t('.delete_assignment'), user_offspring_assignment_path(offspring), method: :delete) {}
     .list-view-pf-main-info
       .list-view-pf-body
@@ -29,7 +29,7 @@
           .list-view-pf-additional-info-item.list-view-pf-additional-info-item-stacked
             - if !offspring.assignment
               .btn.btn-warning= t ".no_assignment_yet"
-            - else            
+            - else
               %strong.bg-success= offspring.assignment.shift.room.name
               .list-view-pf-additional-info-item.list-view-pf-additional-info-item-stacked.text-success
                 = week_day_convert(offspring.assignment.shift.day_of_week).to_s

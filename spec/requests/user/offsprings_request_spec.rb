@@ -8,7 +8,7 @@ RSpec.describe User::OffspringsController, type: :request do
   let(:other_offspring) { FactoryGirl.create(:offspring) }
   let(:new_offspring) { FactoryGirl.attributes_for(:offspring, user: user, last_name: offspring.last_name) }
 
-  context "when user authenticated" do
+  context 'when user authenticated' do
     before(:each) do
       login_as(user, scope: :user)
     end
@@ -17,8 +17,8 @@ RSpec.describe User::OffspringsController, type: :request do
       Warden.test_reset!
     end
 
-    describe "GET #index" do
-      it "returns list of offsprings" do
+    describe 'GET #index' do
+      it 'returns list of offsprings' do
         user
         offspring
         offspring2
@@ -28,35 +28,35 @@ RSpec.describe User::OffspringsController, type: :request do
       end
     end
 
-    describe "GET #new" do
-      it "returns new offspring form" do
+    describe 'GET #new' do
+      it 'returns new offspring form' do
         user
         get new_user_offspring_path(user)
         expect(response).to have_http_status(:success)
       end
     end
 
-    describe "POST #create" do
-      it "creates valid offspring when valid" do
+    describe 'POST #create' do
+      it 'creates valid offspring when valid' do
         expect { post user_offsprings_path(user), params: { offspring: new_offspring } }
           .to change(Offspring, :count).by(1)
-        expect(I18n.t("user.offsprings.create.offspring_added")).not_to include "translation missing:"
-        expect(flash[:success]).to eq I18n.t("user.offsprings.create.offspring_added", offspring: new_offspring[:first_name])
+        expect(I18n.t('user.offsprings.create.offspring_added')).not_to include 'translation missing:'
+        expect(flash[:success]).to eq I18n.t('user.offsprings.create.offspring_added', offspring: new_offspring[:first_name])
         expect(response).to redirect_to user_offsprings_path
       end
 
-      it "does not create invalid offspring" do
-        new_offspring[:first_name] = ""
+      it 'does not create invalid offspring' do
+        new_offspring[:first_name] = ''
         expect { post user_offsprings_path(user), params: { offspring: new_offspring } }
           .not_to change(Offspring, :count)
-        expect(I18n.t("user.offsprings.create.offspring_not_added")).not_to include "translation missing:"
-        expect(flash[:alert]).to eq I18n.t("user.offsprings.create.offspring_not_added")
+        expect(I18n.t('user.offsprings.create.offspring_not_added')).not_to include 'translation missing:'
+        expect(flash[:alert]).to eq I18n.t('user.offsprings.create.offspring_not_added')
         expect(response).to have_http_status(:success)
       end
     end
 
-    describe "GET #edit" do
-      it "returns edit properly" do
+    describe 'GET #edit' do
+      it 'returns edit properly' do
         get edit_user_offspring_path(offspring)
         expect(response).to have_http_status(:success)
         expect(response.body).to include ERB::Util.html_escape offspring.first_name
@@ -66,13 +66,13 @@ RSpec.describe User::OffspringsController, type: :request do
       it "does not find other user's offspring" do
         get edit_user_offspring_path(other_offspring)
         expect(response).to redirect_to(user_offsprings_path)
-        expect(I18n.t("user.offsprings.edit.offspring_not_found")).not_to include "translation missing:"
-        expect(flash[:alert]).to eq I18n.t("user.offsprings.edit.offspring_not_found")
+        expect(I18n.t('user.offsprings.edit.offspring_not_found')).not_to include 'translation missing:'
+        expect(flash[:alert]).to eq I18n.t('user.offsprings.edit.offspring_not_found')
       end
     end
 
-    describe "GET #show" do
-      it "returns offpspring properly" do
+    describe 'GET #show' do
+      it 'returns offpspring properly' do
         get user_offspring_path(offspring)
         expect(response).to have_http_status(:success)
         expect(response.body).to include ERB::Util.html_escape offspring.first_name
@@ -82,13 +82,13 @@ RSpec.describe User::OffspringsController, type: :request do
       it "does not find other user's offspring" do
         get user_offspring_path(other_offspring)
         expect(response).to redirect_to(user_offsprings_path)
-        expect(I18n.t("user.offsprings.show.offspring_not_found")).not_to include "translation missing:"
-        expect(flash[:alert]).to eq I18n.t("user.offsprings.show.offspring_not_found")
+        expect(I18n.t('user.offsprings.show.offspring_not_found')).not_to include 'translation missing:'
+        expect(flash[:alert]).to eq I18n.t('user.offsprings.show.offspring_not_found')
       end
     end
 
-    describe "GET #update" do
-      it "updates the offspring" do
+    describe 'GET #update' do
+      it 'updates the offspring' do
         offspring
         expect do
           patch user_offspring_path(offspring), params: { offspring: new_offspring }
@@ -103,32 +103,32 @@ RSpec.describe User::OffspringsController, type: :request do
           patch user_offspring_path(other_offspring), params: { offspring: new_offspring }
           other_offspring.reload
         end.to_not change { other_offspring.first_name }
-        expect(I18n.t("user.offsprings.update.offspring_not_found")).not_to include("translation missing:")
-        expect(flash[:alert]).to eq I18n.t("user.offsprings.update.offspring_not_found")
+        expect(I18n.t('user.offsprings.update.offspring_not_found')).not_to include('translation missing:')
+        expect(flash[:alert]).to eq I18n.t('user.offsprings.update.offspring_not_found')
         expect(response).to redirect_to user_offsprings_path
       end
 
-      it "does not update offspring with errors" do
+      it 'does not update offspring with errors' do
         offspring
         expect do
-          new_offspring[:first_name] = ""
+          new_offspring[:first_name] = ''
           patch user_offspring_path(offspring), params: { offspring: new_offspring }
           offspring.reload
         end.to_not change { offspring.first_name }
-        expect(I18n.t("user.offsprings.update.offspring_not_updated")).not_to include("translation missing:")
-        expect(flash[:alert]).to eq I18n.t("user.offsprings.update.offspring_not_updated")
+        expect(I18n.t('user.offsprings.update.offspring_not_updated')).not_to include('translation missing:')
+        expect(flash[:alert]).to eq I18n.t('user.offsprings.update.offspring_not_updated')
         expect(response).to have_http_status(200)
         expect(controller.params[:id]).to eq(offspring.to_param)
-        expect(controller.params[:action]).to eq("update")
+        expect(controller.params[:action]).to eq('update')
       end
     end
 
-    describe "GET #destroy" do
-      it "deletes the offspring" do
+    describe 'GET #destroy' do
+      it 'deletes the offspring' do
         offspring
         expect { delete user_offspring_path(offspring) }.to change(Offspring, :count).by(-1)
-        expect(I18n.t("user.offsprings.destroy.offspring_deleted")).not_to include "translation missing:"
-        expect(flash[:success]).to eq I18n.t("user.offsprings.destroy.offspring_deleted", offspring: offspring.first_name)
+        expect(I18n.t('user.offsprings.destroy.offspring_deleted')).not_to include 'translation missing:'
+        expect(flash[:success]).to eq I18n.t('user.offsprings.destroy.offspring_deleted', offspring: offspring.first_name)
         expect(response).to redirect_to user_offsprings_path
       end
 
@@ -136,23 +136,23 @@ RSpec.describe User::OffspringsController, type: :request do
         offspring
         other_offspring
         expect { delete user_offspring_path(other_offspring) }.to_not change(Offspring, :count)
-        expect(I18n.t("user.offsprings.destroy.offspring_not_found")).not_to include("translation missing:")
-        expect(flash[:alert]).to eq I18n.t("user.offsprings.update.offspring_not_found")
+        expect(I18n.t('user.offsprings.destroy.offspring_not_found')).not_to include('translation missing:')
+        expect(flash[:alert]).to eq I18n.t('user.offsprings.update.offspring_not_found')
         expect(response).to redirect_to user_offsprings_path
       end
 
-      it "shows a flash error if necessary" do
+      it 'shows a flash error if necessary' do
         offspring
         allow_any_instance_of(Offspring).to receive(:destroy).and_return(false)
         expect { delete user_offspring_path(offspring) }.to_not change(Offspring, :count)
-        expect(I18n.t("user.offsprings.destroy.offspring_not_deleted")).not_to include("translation missing:")
-        expect(flash[:alert]).to eq I18n.t("user.offsprings.destroy.offspring_not_deleted", offspring: offspring.first_name)
+        expect(I18n.t('user.offsprings.destroy.offspring_not_deleted')).not_to include('translation missing:')
+        expect(flash[:alert]).to eq I18n.t('user.offsprings.destroy.offspring_not_deleted', offspring: offspring.first_name)
         expect(response).to redirect_to user_offsprings_path
       end
     end
   end
 
-  context "when user authenticated and global locked in" do
+  context 'when user authenticated and global locked in' do
     before(:all) do
       Myconfig.global_lock_set_true
     end
@@ -169,15 +169,15 @@ RSpec.describe User::OffspringsController, type: :request do
       Myconfig.global_lock_set_false
     end
 
-    it "translation can be found" do
-      expect(I18n.t("global_lock_error")).not_to include "translation missing:"
+    it 'translation can be found' do
+      expect(I18n.t('global_lock_error')).not_to include 'translation missing:'
     end
 
     it "can't create new offspring" do
       expect { post user_offsprings_path(user), params: { offspring: new_offspring } }
         .not_to change(Offspring, :count)
       expect(response).to redirect_to root_path
-      expect(flash[:alert]).to eq I18n.t("global_lock_error")
+      expect(flash[:alert]).to eq I18n.t('global_lock_error')
     end
 
     it "can't update offspring" do
@@ -187,7 +187,7 @@ RSpec.describe User::OffspringsController, type: :request do
         offspring.reload
       end.not_to change { offspring.first_name }
       expect(response).to redirect_to root_path
-      expect(flash[:alert]).to eq I18n.t("global_lock_error")
+      expect(flash[:alert]).to eq I18n.t('global_lock_error')
     end
   end
 end

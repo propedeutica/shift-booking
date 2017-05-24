@@ -12,5 +12,4 @@ class Assignment < ApplicationRecord
   validates_each :shift do |assignment|
     assignment.errors.add(:shift, I18n.t('shift.no_sites_available', scope: i18n_scope)) unless assignment.shift&.sites_available?
   end
-
 end

@@ -3,7 +3,7 @@ class Admin::ShiftsController < Admin::AdminIdentifiedController
     @shift = Shift.find_by(id: params[:id])
     if @shift.nil?
       redirect_to admin_rooms_path
-      flash[:alert] = (t ".shift_not_found")
+      flash[:alert] = (t '.shift_not_found')
     else
       @assignments = @shift.assignments
     end
@@ -18,10 +18,10 @@ class Admin::ShiftsController < Admin::AdminIdentifiedController
     @room = Room.find_by(id: params[:room_id])
     @shift = @room.shifts.new(shifts_params)
     if @shift.save
-      flash[:success] = (t ".shift_added", shift: @shift.id)
+      flash[:success] = (t '.shift_added', shift: @shift.id)
       redirect_to admin_rooms_path
     else
-      flash[:alert] = (t ".shift_not_added")
+      flash[:alert] = (t '.shift_not_added')
       render 'new'
     end
   end
@@ -29,7 +29,7 @@ class Admin::ShiftsController < Admin::AdminIdentifiedController
   def edit
     @shift = Shift.find_by(id: params[:id])
     if @shift.nil?
-      flash[:alert] = (t ".shift_not_found")
+      flash[:alert] = (t '.shift_not_found')
       redirect_to admin_rooms_path
     end
     @room = @shift&.room
@@ -39,29 +39,29 @@ class Admin::ShiftsController < Admin::AdminIdentifiedController
     @shift = Shift.find(params[:id])
     @room = @shift.room
     if @shift&.update_attributes(shifts_params)
-      flash[:success] = (t ".shift_updated")
+      flash[:success] = (t '.shift_updated')
       redirect_to admin_shift_path(@shift)
     else
-      flash[:alert] = (t ".shift_not_updated")
+      flash[:alert] = (t '.shift_not_updated')
       render 'edit'
     end
   end
 
   def destroy
-    @shift = Shift.find_by(id: params["id"])
+    @shift = Shift.find_by(id: params['id'])
     if @shift&.destroy
-      flash[:success] = (t ".shift_deleted", shift: @shift.id)
+      flash[:success] = (t '.shift_deleted', shift: @shift.id)
     else
-      flash[:alert] = (t ".shift_not_deleted")
+      flash[:alert] = (t '.shift_not_deleted')
     end
     redirect_to admin_rooms_path
   end
 
   def destroy_all
     if Shift.destroy_all
-      flash[:success] = (t ".shift_destroy_all")
+      flash[:success] = (t '.shift_destroy_all')
     else
-      flash[:alert] = (t ".shift_destroy_all_error")
+      flash[:alert] = (t '.shift_destroy_all_error')
     end
     redirect_to admin_dashboard_path
   end

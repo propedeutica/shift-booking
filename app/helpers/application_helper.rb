@@ -44,6 +44,6 @@ module ApplicationHelper
     week_days.each_with_index do |x, index|
       week[index] = t "week.#{x}"
     end
-    week[day] || t("week.no_day")
+    week[day] || t('week.no_day')
   end
 end
