@@ -6,12 +6,12 @@
   %body
     - if admin_signed_in?
       = render 'layouts/admin_masthead'
+      = render 'layouts/admin_dashboard_js'
     - else
       = render 'layouts/masthead'
     .container-fluid
       = render 'layouts/messages'
       = yield
-      = render 'layouts/tail'
     = render 'layouts/debug' if Rails.env.development?
     = yield(:javascripts)
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+

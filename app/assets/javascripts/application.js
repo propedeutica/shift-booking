@@ -14,4 +14,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require jquery-match-height
 //= require patternfly
+
