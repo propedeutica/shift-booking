@@ -1,7 +1,7 @@
 class Admin::RoomsController < Admin::AdminIdentifiedController
   def index
     @sites_available = Shift.total_sites_available
-    @rooms = Room.all
+    @rooms = Room.all.includes(:shifts)
     @number_of_rooms = Room.count
     respond_to do |format|
       format.html

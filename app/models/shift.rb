@@ -41,18 +41,10 @@ class Shift < ApplicationRecord
   end
 
   def self.total_capacity
-    tcapacity = 0
-    Shift.all.each do |x|
-      tcapacity += x.room.capacity
-    end
-    tcapacity
+    Room.joins(:shifts).calculate(:sum, :capacity)
   end
 
   def self.total_sites_available
-    tsavailable = 0
-    Shift.all.each do |x|
-      tsavailable += x.sites_available
-    end
-    tsavailable
+    self.total_capacity - self.calculate(:sum, :sites_reserved) - Assignment.count
   end
 end
