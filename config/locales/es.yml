@@ -20,6 +20,41 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
+  time:
+    abbr_day_names:
+    - dom
+    - lun
+    - mar
+    - mié
+    - jue
+    - vie
+    - sáb
+    abbr_month_names:
+    -
+    - ene
+    - feb
+    - mar
+    - abr
+    - may
+    - jun
+    - jul
+    - ago
+    - sep
+    - oct
+    - nov
+    - dic
+    day_names:
+    - domingo
+    - lunes
+    - martes
+    - miércoles
+    - jueves
+    - viernes
+    - sábado
+    formats:
+      default: "%-d/%-m/%Y"
+      long: "%-d de %B de %Y"
+      short: "%-d de %b"
   global_lock_error:         "El sistema está bloqueado: No puede hacerse cambios"
   layouts:
     admin_masthead:
@@ -48,7 +83,7 @@ es:
       log_out:               "Cerrar sesión"
       log_in_as_admin:       "Iniciar sesión como administrador"
       more_options:          "Más opciones"
-      signed_in:             "Iniciar sesión"
+      sign_in:             "Iniciar sesión"
       sign_up:               "Darse de alta"
       not_signed_in:         "Identification needed"
       not_identified:        "No identificado"
@@ -319,6 +354,8 @@ es:
           one:                  "Un error impidió guardar el %{model}"
           other:                "%{count} errores impidieron guardar el %{model}"
           body:                 "Hubo errores en los siguientes campos:"
+      messages:
+        record_invalid:       "registro no válido"
       models:
         shift:
           attributes:
