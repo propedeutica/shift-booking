@@ -20,4 +20,385 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
-  hello: "Hola mundo"
+  global_lock_error:         "El sistema está bloqueado: No puede hacerse cambios"
+  layouts:
+    admin_masthead:
+      users:                 "Usuarios"
+      rooms:                 "Aulas"
+      control_panel:         "Dashboard"
+      reports:               "Informes"
+      help:                  "Ayuda"
+      about:                 "Acerca de"
+      info:                  "Información"
+      signed_in:             "Autenticado"
+      not_signed_in:         "Necesita autenticarse"
+      not_identified:        "Usuario"
+      change_password:       "Cambiar password"
+      sign_out:              "Desconectar"
+      admins:                "Administradores"
+      offsprings:            "Descendencia"
+    masthead:
+      rooms:                 "Aulas"
+      user_panel:            "Mi información"
+      offsprings:            "Descendencia"
+      help:                  "Ayuda"
+      about:                 "Acerca de"
+      info:                  "Información"
+      log_in:                "Iniciar sesión"
+      log_out:               "Cerrar sesión"
+      log_in_as_admin:       "Iniciar sesión como administrador"
+      more_options:          "Más opciones"
+      signed_in:             "Iniciar sesión"
+      sign_up:               "Darse de alta"
+      not_signed_in:         "Identification needed"
+      not_identified:        "No identificado"
+      change_password:       "Cambiar password"
+      sign_out:              "Cerrar sesión"
+  admin:
+    myconfig:
+      global_lock_switch:
+        global_lock_switch_success:         "Interruptor actualizado"
+        global_lock_switch_error:           "Ha habido un error actualizando el interruptor"
+        global_lock_set_true_success:       "El bloqueo global está activado"
+        global_lock_set_true_error:         "Hubo un error activando el bloqueo global"
+        global_lock_set_false_success:      "El bloqueo global está desactivado"
+        global_lock_set_false_error:        "Hubo un error desactivando el bloqueo global"
+    dashboard:
+      index:
+        enable:                "Habilitar"
+        disable:               "Deshabilitar"
+        global_lock_in_status: "Estado del bloqueo global:"
+        status:                "Estado"
+        destroy_all_rooms:      "Borrar todas las aulas"
+        destroy_all_shifts:     "Borrar todos los turnos"
+        destroy_all_users:      "Borrar todos los usuarios"
+        destroy_all_offsprings: "Borrar toda la descendencia"
+        irreversible:           "¿Está seguro? La acción no puede deshacerse"
+      info:
+        admins:                "Administradores"
+        users:                 "Usuarios"
+        offsprings:            "Descendencia"
+        rooms:                 "Aulas"
+        shifts:                "Turnos"
+        total_sites_available: "Plazas disponibles"
+        total_capacity:        "Aforo en todos los turnos"
+        refresh:               "Refresh"
+        space_available:       "Espacio disponible"
+    admins:
+      index:
+        admins:              "Administradores"
+    users:
+      index:
+        users:               "Usuarios"
+      show:
+        edit_user:           "Editar usuario"
+      edit:
+        edit:                         "Editar"
+        we_need_your_admin_password:  "Necesitamos su password de administrador para borrar la cuenta"
+        update:                       "Actualizar"
+        delete_the_account:           "Borrar la cuenta"
+        are_you_sure?:                "¿Está seguro?"
+        back:                         "Atrás"
+      update:
+        user_updated:                 "El Usario %{user} se ha actualizado"
+        user_not_updated:             "El Usario %{user} no ha podido actualizarse"
+      destroy:
+        user_deleted:                 "El Usario %{user} se ha borrado"
+        user_not_deleted:             "El Usario %{user} no ha podido actualizarse"
+        user_not_found:               "No se encontró al usuario"
+    offsprings:
+      offspring:
+        no_assignment_yet:            "Todavía no hay asignación"
+      index:
+        offsprings:               "Descendencia"
+      show:
+        edit_offspring:          "Editar descendencia"
+        offspring_not_found:     "No se pudo encontrar al niño"
+    rooms:
+      room:
+        room:                     "Aula"
+        available:                "Disponible"
+        occupied:                 "Ocupado"
+      add_shift:
+        irreversible:           "¿Está seguro? La acción no puede deshacerse"
+      edit:
+        irreversible:           "¿Está seguro? La acción no puede deshacerse"
+        room_not_found:         "No se pudo encontrar el aula"
+      destroy:
+        room_deleted:           "El Aula %{room} se ha borrado"
+        room_not_deleted:       "Ha habido un error borrando el aula"
+      destroy_all:
+        rooms_destroy_all:       "Se ha borrado todas las Aulas"
+        rooms_destroy_all_error: "Hubo un error borrando todas las aulas"
+      show:
+        room_not_found:         "No se pudo encontar el aula"
+      update:
+        room_updated:        "Aula acutualizda con éxito"
+        room_not_updated:    "Ha habido un error actualizando el aula"
+      create:
+        room_added:          "Aula #{room} añadida"
+        room_not_added:      "Ha habido un error añadiendo el aula"
+      index:
+        room_index:          "Índice de Aulas"
+    shifts:
+      edit:
+        irreversible:           "¿Está seguro? La acción no puede deshacerse"
+        shift_not_found:        "We couldn't find el turno"
+      update:
+        shift_updated:        "Turno updated succesfully"
+        shift_not_updated:    "There was an error updating el turno"
+      show:
+        shift_not_found:      "No se pudo encontrar el turno"
+        shift_not_added:      "Turno could not be added"
+      create:
+        shift_added:          "Turno %{shift} added"
+        shift_not_added:      "Turno could not be added"
+      destroy:
+        shift_deleted:        "Turno %{shift} has been deleted"
+        shift_not_deleted :   "There has been an error deleting el turno"
+      destroy_all:
+        shift_destroy_all:        "Se han borrado todos los turnos"
+        shift_destroy_all_error:  "Hubo un error tratando de borrar todos los turnos"
+  admins:
+    sessions:
+      new:
+        admin:                  "Inicio de sesión de Administrador"
+        log_in:                 "Iniciar sesión"
+        welcome:                "Bienvenido a Reserva de Turno | Interfaz de administrador"
+        welcome-text:           "Este interfaz es exclusivo para administradores"
+        remember_username:      "Recordar administrador"
+  user:
+    offsprings:
+      index:
+        offsprings:             "Descendencia"
+        no_offsprings:          "Añada su descendencia aquí"
+      add_offspring:
+        add_offspring:          "Añadir descendencia"
+      offspring:
+        assign:                 "Asignar turno"
+        no_assignment_yet:      "No hay asignaciones en la base de datos"
+        are_you_sure?:          "¿Está seguro?"
+        delete:                 "Borrar"
+        show:                   "Mostrar"
+        edit:                   "Editar"
+        delete_assignment:      "Borrar assignment"
+        irreversible:           "¿Está seguro? This action can not be undone"
+      new:
+        new_offspring:          "Añadir descendiente"
+        create:                 "Crear"
+        param_error:            "Hubo un error en los parámetros del turno"
+        assign:                 "Asignar turno"
+        no_assignment_yet:      "No hay asignaciones en la base de datos"
+      create:
+        offspring_added:       "Descendiente %{offspring} añadido"
+        offspring_not_added:   "Hubo un error añadiendo descendencia"
+      show:
+        show_offspring:        "Descendencia: %{offspring}"
+        edit:                  "Editar"
+        offspring_not_found:   "No pudimos encontrar la descendencia"
+        cancel:                "Cancelar"
+      edit:
+        edit_offspring:        "Editar: %{offspring}"
+        update:                "Actualizar"
+        delete:                "Borrar"
+        are_you_sure?:         "¿Está seguro?"
+        cancel:                "Cancelar"
+        offspring_not_found:   "No pudimos encontrar la descendencia"
+      update:
+        offspring_updated:      "%{offspring} has been updated"
+        offspring_not_updated:  "There was an error updating the offspring"
+        offspring_not_found:    "No pudimos encontrar la descendencia"
+      destroy:
+        offspring_deleted:      "%{offspring} has been deleted"
+        offspring_not_deleted:  "There was an error deleting the offspring"
+        offspring_not_found:    "No pudimos encontrar la descendencia"
+    assignments:
+      new:
+        offspring_not_found:    "No pudimos encontrar la descendencia"
+        shift_select:           "Seleccione un turno"
+        shift_select_for:       "Seleccione un turno para %{offspring}"
+      create:
+        assignment_added:       "Se ha añadido una asignación"
+        assignment_not_added:   "Hubo un problema con la asignación"
+      destroy:
+        assignment_deleted:     "The assignment for %{offspring} was deleted"
+        assignment_not_deleted: "Hubo un problema borrando la asignación"
+  users:
+    registrations:
+      new:
+        sign_up:               "Darse de alta"
+        remember_username:     "Recordar usuario"
+        characters_minimum:    "caracteres como mínimo"
+        create:                "Crear"
+      edit:
+        edit:                          "Editar"
+        waiting_confirmation:          "Esperando a la confirmación de: %{resource}"
+        leave_blank_if_you_dont_want:  "Déjelo vacío si no quiere cambiarlo"
+        characters_minimum:            "%{characters} caracteres como mínimo"
+        we_need_your_current_password: "Se necesita su password actual para confirmal los cambios"
+        update:                        "Actualizar"
+        cancel_my_account:             "Cancelar mi cuenta"
+        unhappy?:                      "¿No está contento?"
+        are_you_sure?:                 "¿Está seguro?"
+        back:                          "Atrás"
+    sessions:
+      new:
+        user:                "Usuario"
+        log_in:              "Iniciar sesión"
+    show:
+      edit_user:             "Editar usuario"
+  rooms:
+    index:
+      room_index:                "Índice de Aulas"
+    room:
+      available:                 "disponible"
+  application:
+    name:                   "Reserva de Turno"
+    about:                  "Acerca de"
+    forward_url:            "http://www.patternfly.org"
+    github_link:            "https://github.com/propedeutica/shift-booking"
+    help:                   "Ayuda"
+    info:                   "Información"
+    reports:                "Informes"
+    dashboard:              "Dashboard"
+    models:
+      errors_prohibited_saving: "impidió guardar el %{model}"
+      room:
+        room:                   "Aula"
+        name:                   "Nombre"
+        capacity:               "Aforo"
+        room_index:             "Índice de Aulas"
+        add_room:               "Añadir aula"
+        delete_room:            "Borrar aula"
+        update_room:            "Actualizar aula"
+        edit_room:              "Editar aula"
+        cancel_action:          "Cancelar"
+        room_added:             "Aula añadida"
+        room_deleted:           "Aula borrada"
+        room_not_added:         "El aula no se pudo añadir"
+        room_updated:           "El aula se actualizó con éxito"
+        room_not_updated:       "No se pudo actualizar el aula"
+        there_are_no_rooms_yet: "Todavía no hay aulas definidas"
+        redirect_to_index:      "Volver"
+        export_csv:             "Exportar a CSV"
+      shift:
+        shift:                  "Turno"
+        site:                   "Plaza"
+        sites_available:        "Plazas disponibles"
+        add_shift:              "Añadir turno"
+        add_shift_in_room:      "Añadir turno al aula \"%{room}\""
+        edit_shift_in_room:     "Actualizar turno %{shift} en el aula \"%{room}\""
+        delete_shift:           "Borrar turno"
+        update_shift:           "Actualizar turno"
+        edit_shift:             "Editar turno"
+        sites_reserved:         "Plazas reservadas"
+        sites_assigned:         "Plazas asignadas"
+        day_of_week:            "Día de la semana"
+        start_time:             "Hora de comienzo"
+        end_time:               "Hora de fin"
+        redirect_to_index:      "Volver"
+        cancel_edit_shift:      "Cancelar"
+  week:
+    monday:                     "Lunes"
+    tuesday:                    "Martes"
+    wednesday:                  "Miércoles"
+    thursday:                   "Jueves"
+    friday:                     "Viernes"
+    saturday:                   "Sábado"
+    sunday:                     "Domingo"
+    no_day:                     "Nunca"
+  grades:
+    primary_first:              "Primero de primaria"
+    primary_second:             "Segundo de primaria"
+    primary_third:              "Tercero de primaria"
+    others:                     "Otros"
+  activerecord:
+    errors:
+      template:
+        header:
+          one:                  "Un error impidió guardar el %{model}"
+          other:                "%{count} errores impidieron guardar el %{model}"
+          body:                 "Hubo errores en los siguientes campos:"
+      models:
+        shift:
+          attributes:
+            sites_reserved:
+              sites_available_greater_than_or_equal_to_0:   "tiene que ser inferior al número de plazas"
+              not_a_number:                                 "no es un número"
+            start_time:
+              invalid_format:           "debe tener la forma hh:mm"
+            end_time:
+              invalid_format:           "debe tener la forma hh:mm"
+              end_time_earlier_than_start_time:             "debe ser posterior a init_time"
+            day_of_week:
+              not_a_number:                                  "no es un número"
+              blank:                                         "no puede estar vacío"
+              greater_than_or_equal_to:                      "debe ser mayor o igual a %{count}"
+              less_than_or_equal_to:                         "debe ser menor o igual a %{count}"
+        user:
+          attributes:
+            first_name:
+              blank:              "no puede estar vacío"
+              too_short:          "es muy corto (el mínimo de caracteres es %{count})"
+              too_long:           "es muy largo (el máximo de caracteres es %{count})"
+            last_name:
+              blank:              "no puede estar vacío"
+              too_short:          "es muy corto (el mínimo de caracteres es %{count})"
+              too_long:           "es muy largo (el máximo de caracteres es %{count})"
+            email:
+              blank:              "no puede estar vacío"
+              too_short:          "es muy corto (el mínimo de caracteres es %{count})"
+              too_long:           "es muy largo (el máximo de caracteres es %{count})"
+              invalid:            "no es válido"
+              taken:              "está en uso"
+              duplicated:         "está duplicado"
+            password:
+              blank:              "no puede estar vacío"
+              too_short:          "es muy corto (el mínimo de caracteres es %{count})"
+              too_long:           "es muy largo (el máximo de caracteres es %{count})"
+            phone:
+              blank:              "no puede estar vacío"
+              too_short:          "es muy corto (el mínimo de caracteres es %{count})"
+              too_long:           "es muy largo (el máximo de caracteres es %{count})"
+              invalid:            "no es válido"
+        admin:
+          attributes:
+            email:
+              blank:              "no puede estar vacío"
+              invalid:            "no es válido"
+              duplicated:         "está duplicado"
+            password:
+              blank:              "no puede estar vacío"
+              too_short:          "es muy corto (el mínimo de caracteres es %{count})"
+              too_long:           "es muy largo (el máximo de caracteres es %{count})"
+        offspring:
+          attributes:
+            first_name:
+              blank:              "no puede estar vacío"
+              too_short:          "es muy corto (el mínimo de caracteres es %{count})"
+              too_long:           "es muy largo (el máximo de caracteres es %{count})"
+            last_name:
+              blank:              "no puede estar vacío"
+              too_short:          "es muy corto (el mínimo de caracteres es %{count})"
+              too_long:           "es muy largo (el máximo de caracteres es %{count})"
+              different:          "no puede ser diferente de los hermanos'"
+            age:
+              blank:                 "no puede estar vacío'"
+              too_short_or_equal_to: "debe ser mayor o igual a %{count}"
+            grade:
+              blank:              "no puede estar vacío"
+              invalid:            "el curso elegido no es válido"
+              too_short:          "es muy corto (el mínimo de caracteres es %{count})"
+              min_grade:          "debe ser mayor que 0"
+            user:
+              blank:              "debe existir"
+        assignment:
+          attributes:
+            user:
+              blank:                 "no puede estar vacío"
+            offspring:
+              blank:                 "no puede estar vacío"
+              taken:                 "ya ha sido asignado"
+            shift:
+              blank:                 "no puede estar vacío"
+              no_sites_available:    "no hay plazas disponibles"

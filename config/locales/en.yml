@@ -20,7 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  global_lock_error:         "The systems is locked. No changes are allowed"
+  global_lock_error:         "The system is locked. No changes are allowed"
   layouts:
     admin_header:
       users:                 "Users"
@@ -51,7 +51,7 @@ en:
       signed_in:             "Signed in"
       sign_up:               "Sign up"
       not_signed_in:         "Identification needed"
-      not_identified:        "User"
+      not_identified:        "Not identified"
       change_password:       "Change password"
       sign_out:              "Sign_out"
   admin:
@@ -350,7 +350,8 @@ en:
               too_short:          "is too short (minimum is %{count} characters)"
               too_long:           "is too long (maximum is %{count} characters)"
               invalid:            "is invalid"
-              duplicated:         "has already been taken"
+              taken:              "has already been taken"
+              duplicated:         "is duplicated"
             password:
               blank:              "can't be blank"
               too_short:          "is too short (minimum is %{count} characters)"

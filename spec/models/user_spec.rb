@@ -88,7 +88,7 @@ RSpec.describe User, type: :model do
     user2.email = user.email.upcase.dup
     user2.save
     user.valid?
-    expect(user.errors[:email]).to include(I18n.t('email.duplicated', scope: active_record_user))
+    expect(user.errors[:email]).to include(I18n.t('email.taken', scope: active_record_user))
   end
 
   it 'is invalid without a phone' do
