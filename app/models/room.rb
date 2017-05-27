@@ -23,11 +23,7 @@ class Room < ApplicationRecord
   end
 
   def total_sites_available
-    tsitesavailable = 0
-    shifts.each do |x|
-      tsitesavailable += x.sites_available
-    end
-    tsitesavailable
+    total_capacity - Shift.where(room: self).calculate(:sum, :sites_reserved) - Assignment.where(shift: [{ room: self}]).count
   end
 
   def total_occupied
