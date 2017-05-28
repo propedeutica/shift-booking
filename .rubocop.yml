@@ -31,10 +31,10 @@ Style/FrozenStringLiteralComment:
   EnforcedStyle: always
   Enabled: false
 
-Style/EndOfLine:
+Layout/EndOfLine:
   EnforcedStyle: lf
 
-Style/IndentHeredoc:
+Layout/IndentHeredoc:
   EnforcedStyle: powerpack
 
 Lint/AmbiguousBlockAssociation:

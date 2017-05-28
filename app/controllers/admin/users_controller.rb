@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::AdminIdentifiedController
   def index
-    @users = User.all.includes(:offsprings)
+    @users = User.all
   end
 
   def show
